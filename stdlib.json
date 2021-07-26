@@ -1,0 +1,27 @@
+{
+  "name": "optizio/shopify-partner-notifications-slack",
+  "timeout": 10000,
+  "connector": false,
+  "events": {
+    "functions/events/scheduler/xminutely.js": {
+      "name": "scheduler.xminutely",
+      "subtype": {
+        "frequency": "5 minutes"
+      }
+    }
+  },
+  "env": [
+    {
+      "name": "SHOPIFY_PARTNER_API_TOKEN",
+      "description": "Shopify Partner API key"
+    },
+    {
+      "name": "SLACK_CHANNEL",
+      "description": "Slack channel id, e.g. #general"
+    },
+    {
+      "name": "SHOPIFY_APP_ID",
+      "description": "ID of the Shopify application to get partner events for"
+    }
+  ]
+}

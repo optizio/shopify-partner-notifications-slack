@@ -1,0 +1,14 @@
+{
+  "name": "shopify-partner-notifications-slack",
+  "author": "Optizio <dave@optiz.io>",
+  "publish": false,
+  "dependencies": {
+    "@slack/web-api": "^6.3.0",
+    "graphql": "^15.5.1",
+    "graphql-request": "^3.4.0",
+    "lib": "latest"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}
