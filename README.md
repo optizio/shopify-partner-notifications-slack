@@ -2,19 +2,17 @@
 
 [<img src="https://open.autocode.com/static/images/open.svg?" width="192">](https://open.autocode.com/)
 
-This Autocode app will send notifications to Slack when merchants install and subscribe to your app (as well as when they uninstall and unsubscribe). It does this by polling the partner events API (every 5 minutes by default), and then sends a notification to Slack for each relevant event.
+This Autocode app will send notifications to Slack when merchants install and subscribe to your app (as well as when they uninstall and unsubscribe). It does this by polling the partner events API (every 5 minutes by default), and then sends a notification to Slack for each relevant event. 
 
 ![Slack Notifications](/readme/slack_messages.png)
 
 ## How it works
 
-We poll the Shipify Partner API's GraphQL endpoint requesting several relationship (install, uninstall, deactivated, reactivated) and subscription (activated, canceled, frozen, unfrozen) events*.
+We poll the Shipify Partner API's GraphQL endpoint requesting several relationship (install, uninstall, deactivated, reactivated) and subscription (activated, canceled, frozen, unfrozen) events. We don't get all event types. Some aren't particularly useful, or can be too noisy. We also found 5 minutes to be a reasonable poll interval.
 
 We then loop through the events returned since the last request and post a message to Slack for each one.
 
 A note of the last success is also recorded in Autocode's key/value store so that if you get a transient failure, then the next run will pick up any missed events.
-
-* We don't get all event types. Some aren't particularly useful, or can be too noisy.
 
 ## Environment Variables
 
