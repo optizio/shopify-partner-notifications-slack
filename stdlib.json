@@ -20,6 +20,10 @@
       "description": "Slack channel id, e.g. #general"
     },
     {
+      "name": "SHOPIFY_PARTNER_ID",
+      "description": "Shopify Partner ID"
+    },
+    {
       "name": "SHOPIFY_APP_ID",
       "description": "ID of the Shopify application to get partner events for"
     }
