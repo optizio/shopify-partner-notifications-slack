@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "graphql-request": "^3.4.0",
+    "graphql": "^15.5.1",
     "lib": "latest"
   },
   "devDependencies": {
