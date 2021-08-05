@@ -1,0 +1,21 @@
+name: Staging
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+      - run: npm install -g lib.cli
+      - run: echo "$AUTOCODE_ACCESS_TOKEN" > ~/.librc
+        shell: bash
+        env:
+          AUTOCODE_ACCESS_TOKEN: ${{ secrets.AUTOCODE_ACCESS_TOKEN }}
+      - run: lib up dev
