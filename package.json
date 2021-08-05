@@ -3,13 +3,14 @@
   "author": "Optizio <admin@optiz.io>",
   "publish": false,
   "scripts": {
-    "test": "jest --silent",
     "lint": "eslint functions/**/*.js tests/*.js",
+    "test": "jest --silent",
+    "test-all": "npm run lint && npm test",
     "format": "prettier --write functions/**/*.js tests/*.js"
   },
   "dependencies": {
-    "graphql-request": "^3.4.0",
     "graphql": "^15.5.1",
+    "graphql-request": "^3.4.0",
     "lib": "latest"
   },
   "devDependencies": {
