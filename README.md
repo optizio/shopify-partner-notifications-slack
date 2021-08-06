@@ -20,3 +20,7 @@ A note of the last success is also recorded in Autocode's key/value store so tha
 - `SLACK_CHANNEL`: The channel name to post Slack names to, e.g. #general
 - `SHOPIFY_PARTNER_ID`: Your Shopify Partner ID. Can be found under Settings > Account Information > Partner ID in the Partner Portal.
 - `SHOPIFY_APP_ID`: Your Shopify App's ID. Can be found toward the end of the url when on the App's main page in the Partner Portal.
+
+## Linked Resources
+
+The app uses the Autocode Slack linked resource to send messages to a connected Slack workspace.
