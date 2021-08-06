@@ -1,0 +1,40 @@
+name: Release
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  release:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+      - run: |-
+          sudo apt update
+          sudo apt install -y moreutils
+      - run: npm install -g lib.cli
+      - run: 'echo "ACCESS_TOKEN=$AUTOCODE_ACCESS_TOKEN" > ~/.librc'
+        shell: bash
+        env:
+          AUTOCODE_ACCESS_TOKEN: ${{ secrets.AUTOCODE_ACCESS_TOKEN }}
+      - run: |-
+          cat <<EOF > env.json
+          {
+            "release": {
+              "SHOPIFY_PARTNER_API_TOKEN": "$SHOPIFY_PARTNER_API_TOKEN",
+              "SLACK_CHANNEL": "#general",
+              "SHOPIFY_PARTNER_ID": "1573297",
+              "SHOPIFY_APP_ID": "4376027"
+            }
+          }
+          EOF
+        env:
+          SHOPIFY_PARTNER_API_TOKEN: ${{ secrets.SHOPIFY_PARTNER_API_TOKEN }}
+      - run: |-
+          jq --arg version $(echo $GITHUB_REF | cut -f 3 -d '/') '. += {"version": $version}' stdlib.json | sponge stdlib.json
+      - run: cat stdlib.json
+      - run: lib release

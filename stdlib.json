@@ -27,5 +27,6 @@
       "name": "SHOPIFY_APP_ID",
       "description": "ID of the Shopify application to get partner events for"
     }
-  ]
+  ],
+  "version": "0.0.0"
 }
