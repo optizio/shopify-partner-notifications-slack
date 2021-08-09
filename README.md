@@ -8,7 +8,7 @@ This Autocode app will send notifications to Slack when merchants install and su
 
 ## How it works
 
-We poll the Shipify Partner API's GraphQL endpoint requesting several relationship (install, uninstall, deactivated, reactivated) and subscription (activated, canceled, frozen, unfrozen) events. We don't get all event types. Some aren't particularly useful, or can be too noisy. We also found 5 minutes to be a reasonable poll interval.
+We poll the Shopify Partner API's GraphQL endpoint requesting several relationship (install, uninstall, deactivated, reactivated) and subscription (activated, canceled, frozen, unfrozen) events. We don't get all event types. Some aren't particularly useful, or can be too noisy. We also found 5 minutes to be a reasonable poll interval.
 
 We then loop through the events returned since the last request and post a message to Slack for each one.
 
